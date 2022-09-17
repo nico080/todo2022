@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "task": "Pick up laundry",
+    "done": true
+ },
+  {
+    "id": 2,
+    "task": "Send resignation letter",
+    "done": false
+},
+  {
+    "id": 3,
+    "task": "Pay credit card bills",
+    "done": false
+  
+  },
+  {
+    "id": 4,
+    "task": "Meditate",
+    "done": true
+  }
+]
