@@ -8,8 +8,11 @@ export default async function handler(req, res) {
 
     if (req.method === "GET") {
      try {
-        let getTaskList = await task.find(req.query.done != null? {done:req.query.done} :{}).sort({'_id': -1})
+        let getTaskListCnt = await task.find(req.query.done != null? {done:req.query.done} :{}).count();
+        let getTaskList = await task.find(req.query.done != null? {done:req.query.done} :{}).sort({'_id': -1}).limit(req.query.limit).skip(req.query.skips != null? req.query.skips :0);
         return  res.status(200).json({
+          totalNum: getTaskListCnt,
+          totalPages:Math.ceil(getTaskListCnt / req.query.limit),
           tasks: getTaskList
         })
       } catch (e) {
@@ -41,7 +44,7 @@ export default async function handler(req, res) {
     try {
       task.deleteMany({ done: true },
         (async()=>{
-          const tasks = await task.find({}).sort({'_id': -1})
+          const tasks = await task.find({}).sort({'_id': -1}).limit(5)
           return  res.status(200).json({
             tasks,
           message: 'Successfully deleted task'

@@ -5,6 +5,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
+ 
+
   return (
     <Layout>
       <Component {...pageProps} />

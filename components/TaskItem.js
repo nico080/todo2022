@@ -7,7 +7,7 @@ import {DataContext} from '../utilities/DataContext'
 
 const TaskItem = ({ taskItem }) => {
 
-  const [taskList,setTaskList,handleUpdateStatus,handleDeleteTask]= useContext(DataContext);
+  const [taskList,handleUpdateStatus,handleDeleteTask]= useContext(DataContext);
   const [isHovering, setIsHovering] = useState(false);
   let isUpdated = false;
   const handleMouseOver = () => {

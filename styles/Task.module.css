@@ -125,3 +125,7 @@
   color: black !important;
   border: 2px solid #555555;
 }
+
+.noTask{
+  padding:30px;
+}
