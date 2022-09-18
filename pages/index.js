@@ -26,6 +26,7 @@ export default function Home({ taskItems }) {
           return response.data.task;
         })
         .then((data) => {
+          taskList.pop();
           setTaskList((taskList) => [
             data,
             ...taskList,
