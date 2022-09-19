@@ -1,6 +1,5 @@
 # Next.js Crash Course Project
 
-Project from my Next.js crash course on YouTube
 
 ### Run the development server:
 
@@ -13,3 +12,7 @@ npm run dev
 ```bash
 npm run build
 ```
+
+### Run the unit test:
+ 
+ npm test

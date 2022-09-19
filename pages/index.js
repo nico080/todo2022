@@ -7,12 +7,14 @@ import axios from "axios";
 import Pagination from "@material-ui/lab/Pagination";
 import { useRouter } from "next/router";
 
+
+
 export default function Home({ taskItems }) {
   const router = useRouter();
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState(taskItems.tasks);
   const [taskListPages, setTaskListPages] = useState(taskItems.totalPages);
-  const [taskListLimits, setTaskListLimits] = useState(router.query.limit == null ? 5 :router.query.limit);
+  const [taskListLimits, setTaskListLimits] = useState(router?.query.limit == null ? 5 :router.query.limit);
   const [taskListFilter, setTaskListFilter] = useState(null);
 
 
