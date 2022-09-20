@@ -7,7 +7,7 @@ import {DataContext} from '../utilities/DataContext'
 
 const TaskItem = ({ taskItem }) => {
 
-  const [taskList,handleUpdateStatus,handleDeleteTask, isUpdated, setIsUpdated]= useContext(DataContext);
+  const [taskList,handleUpdateStatus,handleDeleteTask]= useContext(DataContext);
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
@@ -33,10 +33,10 @@ const TaskItem = ({ taskItem }) => {
             className={`${taskStyles.faIcons} ${  !taskItem.done ? taskStyles.check :''}`}
             onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}
             icon = { 
-              !taskItem.done && isHovering && !isUpdated ? faCheck :
-              !taskItem.done && !isHovering  && !isUpdated ? faCircleNotch :
-              taskItem.done  && isHovering  && isUpdated ?  faCircleNotch:
-              taskItem.done  && isHovering  && !isUpdated ?  faCircleNotch:
+              !taskItem.done && isHovering ? faCheck :
+              !taskItem.done && !isHovering ? faCircleNotch :
+              taskItem.done  && isHovering  ?  faCircleNotch:
+              taskItem.done  && isHovering  ?  faCircleNotch:
 
               faCheckCircle } /> 
           </span>
