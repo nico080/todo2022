@@ -18,6 +18,7 @@ export default function Home({ taskItems }) {
     router?.query.limit == null ? 5 : router.query.limit
   );
   const [taskListFilter, setTaskListFilter] = useState(null);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const handleSubmit = (event) => {
     
@@ -45,10 +46,13 @@ export default function Home({ taskItems }) {
 
   const handleUpdateStatus = (id, status) => {
     NProgress.start();
+    setIsUpdated(true)
     axios
       .patch(`${server}/api/tasks/item/${id}`, { done: !status })
       .then((response) => {
         NProgress.done(false)
+        setIsUpdated(false)
+
         return response.data;
       })
       .then((data) => {
@@ -56,6 +60,9 @@ export default function Home({ taskItems }) {
         setTaskList(taskList);
       })
       .catch((error) => {
+        setIsUpdated(false)
+        NProgress.done(false)
+
         console.log(error.response.data.error);
       });
   };
@@ -173,7 +180,7 @@ export default function Home({ taskItems }) {
 
       <div className={taskStyles.grid}>
         <DataContext.Provider
-          value={[taskList, handleUpdateStatus, handleDeleteTask]}
+          value={[taskList, handleUpdateStatus, handleDeleteTask, isUpdated, setIsUpdated]}
         >
           {taskList.length > 0 ? (
             <TaskList />
